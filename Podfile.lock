@@ -1,0 +1,66 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - AGGeometryKit (1.2.7):
+    - AGGeometryKit/CALayerProperties (= 1.2.7)
+    - AGGeometryKit/UIViewProperties (= 1.2.7)
+  - AGGeometryKit/CALayerProperties (1.2.7)
+  - AGGeometryKit/UIViewProperties (1.2.7)
+  - CocoaAsyncSocket (7.6.2)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.15.3)
+  - pop (1.0.10)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - Socket.IO-Client-Swift (13.1.2):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.4)
+  - SVProgressHUD (2.2.5)
+  - Toast (4.0.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AGGeometryKit
+  - CocoaAsyncSocket
+  - Masonry
+  - MJExtension
+  - MJRefresh
+  - pop
+  - SDWebImage (~> 3.7.5)
+  - Socket.IO-Client-Swift (~> 13.1.0)
+  - Starscream (~> 3.0.2)
+  - SVProgressHUD
+  - Toast
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AGGeometryKit: 3364603783bfade7a9a61d40c7a75428ba744d38
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  Socket.IO-Client-Swift: 010d2f464bdd1849b859c0cd0500d68194401ac8
+  Starscream: f5da93fe6984c77b694366bf7299b7dc63a76f26
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+
+PODFILE CHECKSUM: 79159bc228050603a5ea7d4eb6b8b883bb7a2ac8
+
+COCOAPODS: 1.3.1
