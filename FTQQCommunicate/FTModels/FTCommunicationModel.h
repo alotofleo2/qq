@@ -26,6 +26,8 @@ typedef enum {
 
 @property (nonatomic, copy) NSString *name;
 
+@property (nonatomic, copy) NSString *iconImageName;
+
 /**初始化方法*/
 - (instancetype)initWithDic:(NSDictionary *)dic NS_DESIGNATED_INITIALIZER;
 /**快速创建方法*/

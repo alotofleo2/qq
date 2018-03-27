@@ -11,12 +11,13 @@
 #import "TJHomeBannerModel.h"
 #import "TJRouteNormalCell.h"
 #import "TJRouteNormalModel.h"
-//#import "SocketIO.h"
+
 @import SocketIO;
 @interface TJRouteViewContoller ()
 @property (nonatomic, strong) NSMutableArray *bannerModels;
 
 @property (nonatomic, strong) NSMutableArray *roomModels;
+
 @property (nonatomic, strong) SocketIOClient* socket;
 
 @property (nonatomic, strong) SocketManager* manager;
@@ -30,6 +31,8 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
      [self registerCellWithClassName:@"TJHomeTopBannerCell" reuseIdentifier:@"TJHomeTopBannerCell"];
     [self registerCellWithClassName:@"TJRouteNormalCell" reuseIdentifier:@"TJRouteNormalCell"];
+    
+    self.hidesBottomBarWhenPushed = YES;
     
     self.view.backgroundColor = [UIColor whiteColor];
 }
@@ -72,19 +75,32 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *params = @{@"roomModel" : self.roomModels[indexPath.row - 1]};
-    [[TJPageManager sharedInstance] pushViewControllerWithName:@"ViewController" params:params];
+
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc =  [storyBoard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [vc setValue:self.roomModels[indexPath.row - 1] forKey:@"roomModel"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
 }
 
-//- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    return NO;
-//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (NSMutableArray *)bannerModels {
+    if (!_bannerModels) {
+        _bannerModels = @[].mutableCopy;
+        for (NSInteger i = 0; i < 3; i++) {
+            TJHomeBannerModel *model = [[TJHomeBannerModel alloc]init];
+            model.image = i==0 ? @"Group 27": @"bg1";
+            
+            [_bannerModels addObject:model];
+        }
+    }
+    return _bannerModels;
+}
 - (NSMutableArray *)roomModels {
     if (!_roomModels) {
         _roomModels = [NSMutableArray arrayWithCapacity:2];
@@ -125,13 +141,10 @@
     NSURL* url = [[NSURL alloc] initWithString:@"http://192.168.31.163:3101"];
     self.manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @(1)}];
     self.socket = self.manager.defaultSocket;
-//    [self.socket connectWithTimeoutAfter:1 withHandler:^{
-//        NSLog(@"connected");
-//    }];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:@[@{@"room_id" : @(1)}] options:0 error:nil];
+
     BLOCK_WEAK_SELF
-    NSString * jsonString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-   id uuid =  [self.socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+
+    [self.socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
        [[self.socket emitWithAck:@"joinIreliaRoom" with:(@[@{@"room_id" : @1}])] timingOutAfter:0 callback:^(NSArray* data) {
            NSLog(@"%@", data);
@@ -142,35 +155,9 @@
         NSLog(@"%@", data);
     }];
     
-//    [socket on:@"joinIreliaRoom" callback:^(NSArray* data, SocketAckEmitter* ack) {
-//        NSLog(@"socket connected");
-//    }];
-//
-//    [socket on:@"room" callback:^(NSArray* data, SocketAckEmitter* ack) {
-//        NSLog(@"socket connected");
-//    }];
-//    [socket on:@"member_count_changed" callback:^(NSArray* data, SocketAckEmitter* ack) {
-//        NSLog(@"socket connected");
-//    }];
-
-//    [self.socket on:@"irelia" callback:^(NSArray* data, SocketAckEmitter* ack) {
-////        double cur = [[data objectAtIndex:0] floatValue];
-//
-//
-//
-//        [ack with:data];
-//    }];
 
     [self.socket connect];
-    
-    [self.socket on:@"joinIreliaRoom" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        NSLog(@"socket connected");
-    }];
-    [[self.socket emitWithAck:@"joinIreliaRoom" with:(@[@{@"room_id" : @1}])] timingOutAfter:0 callback:^(NSArray* data) {
-        NSLog(@"%@", data);
-        [weakSelf.socket emit:@"joinIreliaRoom" with:@[@{@"room_id" : @1}]];
-    }];
-    
+
     
 }
 

@@ -11,7 +11,7 @@
 #import "TJRouteNormalModel.h"
 
 @interface ViewController : UIViewController
-@property (nonatomic, strong) TJRouteNormalModel *model;
+@property (nonatomic, strong) TJRouteNormalModel *roomModel;
 
 @end
 

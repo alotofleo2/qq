@@ -41,7 +41,7 @@
     }
     self.namelabel.text = communicationModel.name;
     //设置头像
-    self.userIconImageView.image = self.communicationModel.userIconImage;
+    self.userIconImageView.image = [UIImage imageNamed:communicationModel.iconImageName];
     //设置message
     [self.messageButton setTitle:self.communicationModel.text forState:UIControlStateNormal];
     
@@ -116,6 +116,8 @@
         
         //加载iconImageView
         self.userIconImageView = [[UIImageView alloc]init];
+        self.userIconImageView.layer.cornerRadius = 55 / 2;
+        self.userIconImageView.layer.masksToBounds = YES;
         [self.contentView addSubview:self.userIconImageView];
         
         //加载messageLabel
@@ -125,7 +127,7 @@
         self.messageButton.titleLabel.numberOfLines = 0;
         [self.messageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         //设cell背景颜色
-        self.contentView.backgroundColor = [UIColor lightGrayColor];
+        self.contentView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
         
         //加载nameLabel
         self.namelabel = [[UILabel alloc]init];

@@ -47,20 +47,21 @@
     _messageButtonFrame.size.height = messageLableSize.size.height + KMARGIN * 4;
     _messageButtonFrame.size.width = messageLableSize.size.width + KMARGIN * 4;
     _messageButtonFrame.origin.y = CGRectGetMaxY(self.timeLableFrame) + KMARGIN * 2;
-    if (model.type == FTCommunicationModelMe) {
-        _messageButtonFrame.origin.x = CGRectGetMaxX(self.userIconImageViewFrame) + KMARGIN * 2;
-    } else {
+    if (model.type != FTCommunicationModelMe) {
+
         _messageButtonFrame.origin.x = CGRectGetMidX(self.userIconImageViewFrame) - self.messageButtonFrame.size.width - KMARGIN * 4;
+    } else {
+        _messageButtonFrame.origin.x = CGRectGetMaxX(self.userIconImageViewFrame) + KMARGIN * 2;
     }
     
-    CGRect nameLabelSize = [model.name boundingRectWithSize:CGSizeMake((DEVICE_SCREEN_WIDTH / 3), MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    CGRect nameLabelSize = [model.name boundingRectWithSize:CGSizeMake((DEVICE_SCREEN_WIDTH / 3), MAXFLOAT) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} context:nil];
     
     _nameLabelFrame.size = nameLabelSize.size ;
     _nameLabelFrame.origin.y = CGRectGetMaxY(self.timeLableFrame);
-    if (model.type == FTCommunicationModelMe) {
-        _nameLabelFrame.origin.x = CGRectGetMaxX(self.userIconImageViewFrame) + KMARGIN * 2;
+    if (model.type != FTCommunicationModelMe) {
+        _nameLabelFrame.origin.x = CGRectGetMidX(self.userIconImageViewFrame) - self.nameLabelFrame.size.width - KMARGIN * 6;
     } else {
-        _nameLabelFrame.origin.x = CGRectGetMidX(self.userIconImageViewFrame) - self.messageButtonFrame.size.width - KMARGIN * 4;
+        _nameLabelFrame.origin.x = CGRectGetMaxX(self.userIconImageViewFrame) + KMARGIN * 4;
     }
     
     

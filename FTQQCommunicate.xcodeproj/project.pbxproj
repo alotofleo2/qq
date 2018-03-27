@@ -887,7 +887,6 @@
 				B35693E3206A1D8F005A31AD /* TJRouteNormalModel.h */,
 				B35693E4206A1D8F005A31AD /* TJRouteNormalModel.m */,
 				B3BE25161CB5062F00DF83B0 /* messages.plist */,
-				B3BE25051CB4F92800DF83B0 /* Assets.xcassets */,
 			);
 			path = FTModels;
 			sourceTree = "<group>";
@@ -898,6 +897,7 @@
 				B35693D9206A0FE1005A31AD /* FTQQCommunicate-Prefix.pch */,
 				B3750C731CB54EA1009159AE /* LaunchScreen.storyboard */,
 				B3750C751CB54EA1009159AE /* Main.storyboard */,
+				B3BE25051CB4F92800DF83B0 /* Assets.xcassets */,
 				B3BE25071CB4F92800DF83B0 /* AppDelegate.h */,
 				B3BE25081CB4F92800DF83B0 /* AppDelegate.m */,
 			);
@@ -1008,7 +1008,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FTQQCommunicate/Pods-FTQQCommunicate-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/SocketIO/SocketIO.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/SocketIO/SocketIO.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1281,7 +1281,7 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "/Users/leo/Desktop/FTQQCommunicate/FTQQCommunicate/FTQQCommunicate-Prefix.pch";
+				GCC_PREFIX_HEADER = "./FTQQCommunicate/FTQQCommunicate-Prefix.pch";
 				INFOPLIST_FILE = FTQQCommunicate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meilishuo.FTQQCommunicate;
@@ -1300,7 +1300,7 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "/Users/leo/Desktop/FTQQCommunicate/FTQQCommunicate/FTQQCommunicate-Prefix.pch";
+				GCC_PREFIX_HEADER = "./FTQQCommunicate/FTQQCommunicate-Prefix.pch";
 				INFOPLIST_FILE = FTQQCommunicate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.meilishuo.FTQQCommunicate;
